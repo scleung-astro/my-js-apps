@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/png" href="img/cat.png">
+
+    <title> My Platform </title>
+    
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html"> My App Corner </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                </li>
+
+                <!--li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Games </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="game1.html">Game 1</a></li>    
+                            <li><a class="dropdown-item" href="game2.html">Game 2</a></li>    
+                            <li><a class="dropdown-item" href="game3.html">Game 3</a></li>    
+                            <li><a class="dropdown-item" href="game4.html">Game 4</a></li>    
+                            <li><a class="dropdown-item" href="game5.html">Game 5</a></li>    
+                        </ul>
+                </li-->
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Apps </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="app1.html">Mini converters</a></li>    
+                            <li><a class="dropdown-item" href="app2.html">Task Manager</a></li>    
+                            <li><a class="dropdown-item" href="app3.html">Market Simulation</a></li>    
+                            <li><a class="dropdown-item" href="app4.html">API Tools</a></li>    
+                            <li><a class="dropdown-item" href="app5.html">Gravity Simulator</a></li>    
+                        </ul>
+                </li>
+
+    
+                
+                <!-- <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Your Books </a>
+
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/cart/">Cart/Checkout</a></li>    
+                            <li><a class="dropdown-item" href="/orders/">Orders</a></li>    
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/inbox/">Inbox</a></li>
+                            <li><a class="dropdown-item" href="/profile/">Profile</a></li>
+                        </ul>
+                    
+                </li-->
+
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                </ul>
+                <!--form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form-->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+    <!-- Mini market game -->
+
+    <div class="container mt-2 mb-1">
+
+        <div class="row">
+            <h2> API Exercise  </h2>
+            <p> This app uses some open-source API to fetch online data from other webpage and make an informative and colourful
+                one-page website! Enjoy the beautiful pictures. :-)
+            </p>
+        </div>
+
+        <div class="row my-2">
+
+            <div class="col mx-2 my-2 px-2 py-2" id="cryptoCorner"> 
+                <div class="row" id="crpytoDescription">
+                    <h2> Today's Crypto report  </h2>
+                </div>
+                <div class="row">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Pair</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Bid/Ask</th>
+                            <th scope="col">Change(%)</th>
+
+                          </tr>
+                        </thead>
+                        <tbody id="crpytoTable">
+                          
+                        </tbody>
+                      </table>
+
+                </div>
+            </div>
+
+            <div class="col-2 mx-2 my-2 px-2 py-2" id="dogPicCorner">
+                <div class="row" id="dogDescription">
+                    <h2> Today's lovely dog :-) </h2>
+                </div>
+                <div class="row" id="dogPic"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="app4.js"></script>
+
+</body>
+
+</html>
