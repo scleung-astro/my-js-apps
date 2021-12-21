@@ -59,6 +59,9 @@ const GravSim = class{
         this.showFrameX = 0;
         this.showFrameY = 0;
 
+        this.output_freq = 50;
+        this.nstep = 0;
+
         this.particles = [];
         for (let i=0;i<n;i++){
             let x = Math.random() * boxWidth;
@@ -183,9 +186,21 @@ const GravSim = class{
         ctx.fillStyle = "#FF0";
         for (let i=0;i<this.np;i++){
             ctx.beginPath();
-            ctx.arc((this.particles[i].x - shift_x) * this.plotScale / 3, (this.particles[i].y - shift_y) * this.plotScale / 3, circleSize, 0, 2*Math.PI);
+            ctx.arc((this.particles[i].x - shift_x) * this.plotScale / boxDisplayRatio, 
+                (this.particles[i].y - shift_y) * this.plotScale / boxDisplayRatio, 
+                circleSize, 0, 2*Math.PI);
             ctx.fill();
         }
+
+        // set a download for auto generation of png figure
+        // but mute for normal run, only use for making homepage
+        // if (this.nstep%this.output_freq == 0){
+        //     var canvasLink = document.createElement('a');
+        //     canvasLink.download = 'canvas_image_' + this.nstep + '.png';
+        //     canvasLink.href = canvas.toDataURL();
+        //     canvasLink.click();
+        // };
+
 
     }
 
@@ -258,6 +273,7 @@ const GravSim = class{
         }
 
         this.time += this.dt;
+        this.nstep += 1;
         this.plotParticles();
 
         currTime.innerHTML = Math.round(this.time*100)/100;
@@ -280,7 +296,7 @@ const GravSim = class{
         //console.log(this.dt, this.kineticEnergy + this.potentialEnergy);
         this.energyHist.push([this.time, this.kineticEnergy + this.potentialEnergy]);
         this.potEnergyHist.push([this.time, this.potentialEnergy]);
-        this.kinEnergyHist.push([this.time, this.potentialEnergy]);
+        this.kinEnergyHist.push([this.time, this.kineticEnergy]);
 
     }
 
@@ -297,6 +313,7 @@ function drawChart() {
     var chart = new google.visualization.LineChart(document.getElementById('graphPanel'));
 
     chart.draw(data, options);
+
 }
 
 function showChart(){
@@ -324,7 +341,7 @@ function pause(){
         clearInterval(intervalID);
         isRunning = false;
     } else {
-        setInterval(function(){
+        intervalID = setInterval(function(){
             gravSim.evolveParticles()
         }, intervalVal);
         isRunning = true;
@@ -387,6 +404,8 @@ function restart(){
     intervalID = null;
 
     gravSim = new GravSim(parseInt(restartNp.value));
+    gravSim.showFrameX = 0;
+    gravSim.showFrameY = 0;
 
     intervalID = setInterval(function(){
         gravSim.evolveParticles()
@@ -395,7 +414,7 @@ function restart(){
 
 // Zoom-in of the simulation to a broader view
 function zoomIn(){
-    if (gravSim.plotScale<4){
+    if (gravSim.plotScale<boxDisplayRatio+1){
         gravSim.plotScale += 1;
         magLevel.innerHTML = gravSim.plotScale;
     }
@@ -444,6 +463,8 @@ let plotScale = 1;
 let isRunning = true;
 let intervalID = null;
 
+const boxDisplayRatio = 4;
+
 const energyPlotChoice = document.getElementById("plotChoice");
 const restartNp = document.getElementById("restartNp");
 
@@ -452,8 +473,8 @@ const ctx = canvas.getContext("2d");
 const width = canvas.width;
 const height = canvas.height;
 
-const boxWidth = 3*canvas.width;
-const boxHeight = 3*canvas.height;
+const boxWidth = boxDisplayRatio*canvas.width;
+const boxHeight = boxDisplayRatio*canvas.height;
 
 const currTime = document.getElementById("currTime");
 const boxSize = document.getElementById("boxSize");
@@ -461,7 +482,7 @@ const magLevel = document.getElementById("magLevel");
 const plotZone = document.getElementById("plotZone");
 
 
-gravSim = new GravSim(400);
+gravSim = new GravSim(900);
 gravSim.evolveParticles()
 
 
