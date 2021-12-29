@@ -13,6 +13,8 @@
     <link rel="shortcut icon" type="image/png" href="img/cat.png">
 
     <title> My Platform </title>
+
+    
     
 </head>
 
@@ -91,105 +93,160 @@
     <div class="container mt-2 mb-1">
 
         <div class="row">
-            <h2> Mini market simulator.  </h2>
-            <p> This app is about online simulation and random number generater. You can invest in a number of aseets. 
-                The change of these assets includes market fluctuations and macroeconomics effects. The aim is to build 
-                a good portfolio so that you can profit in a bright market, and can reduce loss when the market is 
-                getting cloudy. Let's learn how to build a profiting portfolio and risk diversification!</p>
+            <h2> Bookkeeping manager </h2>
+            <p> This apps helps you to manage your different account and shows your recent income and spending.
+                In this app you can create different accounts to store your transactions. The app can let you 
+                manage multiple accounts so that you can handle the status of each account. 
+                Let's manage your finance!</p>
         </div>
 
-        <div class="row my-2">
-
-            <div class="col mx-2 my-2 px-2 py-2"> 
-
-                <h2> Assets </h2>
-
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">product</th>
-                            <th scope="col">price</th>
-                            <th scope="col">hold (avg. cost)</th>
-                        </tr>
-                    </thead>
-                    <tbody id="assetPrices">
-                        
-                    </tbody>
-                </table>
-
+        <div class="row border px-1 py-1 mb-1" >
+            <div class="col"> 
+                <b>Create account:</b>  
+            </div>
+            <div class="col">
+                <input type="text" name="" placeholder="New account..." id="InputNewAccount" class="form-control">
+            </div>
+            <div class="col">
+                <button class="btn btn-primary" type="button" onclick="AddAccount()">Add!</button>
             </div>
 
-            <div class="col mx-2 my-2 px-2 py-2" id="priceChart">
+            <div class="col"> 
+                <b>Delete account: </b> 
+            </div>
+            <div class="col">
+                <select id="SelectDeleteAccount" class="form-select">
+                </select>
+            </div>
+            <div class="col">
+                <button class="btn btn-primary" type="button" onclick="DeleteAccount()">Delete!</button>
+            </div>
+        </div>
+            
+        <!-- bg-dark text-white -->
+        <div class="row my-2" >
 
-                <h2> Price Chart </h2>
+            <div class="col-4">
+                <div class="row">
+                    <h3> Add Transaction </h3>
+                    <div class="col-3">
+                        Date:
+                    </div>
+                    <div class="col-9">
+                        <input type="date" id="InputTransactionDate" class="form-control">
+                    </div>
+                </div>
 
                 <div class="row">
-                    <div class="col-5">
-                        <select class="form-select" aria-label="Default select example" id="assetChartChoice">
-                            <option selected>Select Asset</option>
-                            <option value="0">Stock</option>
-                            <option value="1">Bond</option>
-                            <option value="2">Oil</option>
-                            <option value="3">Gold</option>
-                            <option value="4">CATCOIN</option>
+                    <div class="col-3" width=100%>
+                        Content:
+                    </div>
+                    <div class="col-9">
+                        <input type="text" id="InputTransactionContent" class="form-control" placeholder="Description">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-3">
+                        From:
+                    </div>
+                    <div class="col-9">
+                        <select id="SelectFromAccount" class="form-select">
                         </select>
                     </div>
-                    <div class="col">
-                        <button type="button" class="btn btn-primary" onclick="showChart()"> Get chart! </button>
+                </div>
+
+                <div class="row">
+                    <div class="col-3">
+                        To:
+                    </div>
+                    <div class="col-9">
+                        <select id="SelectToAccount" class="form-select">
+                        </select>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col">
-                        <div id="chart_div" style="width: 500px; height: 300px;"></div>
+                    <div class="col-3">
+                        Amount:
+                    </div>
+                    <div class="col-9">
+                        <input type="number" id="InputTransactionAmount" class="form-control" placeholder="Up to 2-digit" value=0>
                     </div>
                 </div>
 
-            </div>
-
-        
-            <div class="col-2 mx-2 my-1 px-2 py-2">
-
-                <h2> Trade Asset </h2>
-
-                <div class="row mb-1" id="currentCash">
-
-                </div>
-
-                <div class="row mb-1">
-                    <select class="form-select" aria-label="Default select example" id="assetTradeChoice">
-                        <option selected>Select Asset</option>
-                        <option value="0">Stock</option>
-                        <option value="1">Bond</option>
-                        <option value="2">Oil</option>
-                        <option value="3">Gold</option>
-                        <option value="4">CATCOIN</option>
-                    </select>
-                </div>
                 <div class="row mb-2">
-                    <input type="number" class="form-control" placeholder="Amount" aria-label="task" aria-describedby="basic-addon1" id="assetTradeAmt">
+                    <div class="col-3" id="DivCBUpdate">
+                        <label>Update?</label>
+                        <input type="checkbox" class="custom-control-input" id="CheckBoxUpdateTransaction">
+                    </div>
+                    
+                    <div class="col-2">
+                        ID:
+                    </div>
+                    <div class="col-7" id="ColInputUpdateID">
+                        <input type="number" class="form-control" id="InputUpdateID" placeholder="Leave blank" readonly>
+                    </div>
                 </div>
-                <div class="row mb-1">
-                    <button type="button" class="btn btn-primary" onclick="transact()"> Trade </button>
+
+                <div class="row px-2">
+                    <button type="button" onclick="UpdateTransactions()" class="btn btn-primary"> Update Transaction</button>
                 </div>
+
                 <div class="row">
-                    <button type="button" class="btn btn-primary" onclick="pauseGame()"> Play/Pause </button>
+
                 </div>
+
+                <div class="row my-2">
+                    <div class="col-3">
+                        <label>View</label>
+                    </div>
+                    
+                    <div class="col-6">
+                        <select id="SelectViewAccount" class="form-select">
+                        </select>
+                    </div>
+                    <div class="col-3">
+                        <button type="button" onclick="ViewAccount()" class="btn btn-primary"> View! </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-8">
+
+                <table class="table table-responsive">
+                    <thead>
+                      <tr>
+                        <th scope="col-1">ID</th>
+                        <th scope="col-2">Date</th>
+                        <th scope="col-3">Content</th>
+                        <th scope="col-1">From</th>
+                        <th scope="col-1">To</th>
+                        <th scope="col-1">Amount</th>
+                        <th scope="col-1">Subtotal</th>
+                        <th scope="col-1">Edit</th>
+                        <th scope="col-1">Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody id="TransactionTable" style="height:100%; overflow-y: scroll">
+                      
+                    </tbody>
+                  </table>
 
             </div>
+
+            
+
+
         </div>
-
-        <div class="row" id="news">
-
-        </div>
-
-
 
     </div>
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="app3.js"></script>
+    <script src="app6.js"></script>
+
+    <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript"> google.charts.load('current', {'packages':['corechart']}); </script> -->
+
 
 </body>
 
