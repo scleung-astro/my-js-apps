@@ -12,6 +12,8 @@ The current web contains 5 mini-apps which I feel interesting:
 
 4. *API Tools*: As most webpage needs to handle, I experiment the use of API to call for some interesting pictures or useful data and present on browser. 
 
-5. *Gravity Simulator*: This is my final app in this series and is the most dedicated one in terms of its coding complexity and involved time (as a weekend project). The code solves for the N-body simulation which models how "particles" interacts with each other through a prescribed force. In this one we consider the Newtonian gravity. There are a number of options you can tune such as how fast the simulation and the region you want to zoom in for a clearer view. I again use the google chart so that we can visualize how system evolves statistically.  
+5. *Gravity Simulator*: This is a slightly larger app in this series and is the most dedicated one in terms of its coding complexity and involved time (as a weekend project). The code solves for the N-body simulation which models how "particles" interacts with each other through a prescribed force. In this one we consider the Newtonian gravity. There are a number of options you can tune such as how fast the simulation and the region you want to zoom in for a clearer view. I again use the google chart so that we can visualize how system evolves statistically.  
+
+6. *Financial Manager*: This is the experiemetnal app for building a one-page app without using external memory or server. The app helps you classify and manage transaction for different account. More than one accounts can be tracked and the apps can let you grasp the financial status of the account based on your income and expenditure. 
 
 ## Enjoy the apps! 🙂
